@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+    <title>Document</title>
+</head>
+<body>
+    <a class="btn" href="{% url 'authentication:logout' %}">Logout</a>
+
+    <!-- <div class="bg-image"></div> -->
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+            <img src="{% static 'images/rm.jpeg' %}" style="width:100%">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="{% static 'images/rr.jpeg' %}" style="width:100%">
+        </div>
+        
+        <div class="mySlides fade">
+            <img src="{% static 'images/try.jpeg' %}" style="width:100%">
+        </div>
+        
+    </div>
+    <div class="bg-text">
+        <div class='row align-items-start mt-4'>
+            <form action="{% url 'mrs_app:search' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group mx-sm-3 mb-2">
+                    <input type="text" name='movie' class="form-control" placeholder="Enter Movie Name"><br>
+                    <input type="submit" value="Search Movie">
+                </div>
+            </form>
+        
+        <div class='row align-items-end no-gutters'>
+            {% if messages %}
+                {% for message in messages %}
+                    <h1>{{ message }}</h1>
+                {% endfor %}
+            {% else %}
+                {% for i in output %}
+                    <div class='col-sm-6' style='color:#fff;font-size:30px'>
+                        <p>{{ i }}</p>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    </div>
+
+<script>
+    var slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        
+        for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {slideIndex = 1}    
+        
+        slides[slideIndex-1].style.display = "block";  
+        
+        setTimeout(showSlides, 5000); // Change image every 2 seconds
+    }
+</script>
+
+</body>
+</html>

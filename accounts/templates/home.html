@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_block %} Home {% endblock title_block %}
+
+{% block custom_css %}
+	<link rel="stylesheet" href="{% static 'css/main.css' %}" />
+{% endblock custom_css %}
+
+{% block body_block %}
+
+<!-- Header -->
+	<header id="header">
+		<div class="inner">
+			<a href="{% url 'authentication:home' %}" class="logo">MRS</a>
+			<!-- <nav id="nav">
+				<a href="#">Home</a>
+				<a href="#">Generic</a>
+				<a href="#">Elements</a>
+			</nav> -->
+			<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+		</div>
+	</header>
+
+<!-- Banner -->
+	<section id="banner">
+		<h1>Welcome to Movie Recommendation System</h1>
+		<!-- <p>A free responsive HTML5 website template by TEMPLATED.</p> -->
+	</section>
+
+<!-- One -->
+	<section id="one" class="wrapper">
+		<div class="inner">
+			<div class="flex flex-2">
+				<article>
+					<header>
+						<h3>If you're new user,<br /> Sign Up</h3>
+					</header>
+					<!-- <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p> -->
+					<footer>
+						<a href="{% url 'authentication:register' %}" class="button special">Sign Up</a>
+					</footer>
+				</article>
+				<article>
+					<header>
+						<h3>If you're already a user,<br /> Log In</h3>
+					</header>
+					<!-- <p>Morbi interdum mollis sapien. Sed ac risus. Phasellus lacinia, magna a ullamcorper laoreet, lectus arcu.</p> -->
+					<footer>
+						<a href="{% url 'authentication:login' %}" class="button special">Log In</a>
+					</footer>
+				</article>
+			</div>
+		</div>
+	</section>
+
+<!-- Footer -->
+	<footer id="footer">
+		<div class="inner">
+			<div class="flex">
+				<div class="copyright">
+					&copy; 2020.
+				</div>
+				<!-- <ul class="icons">
+					<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+					<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+					<li><a href="#" class="icon fa-linkedin"><span class="label">linkedIn</span></a></li>
+					<li><a href="#" class="icon fa-pinterest-p"><span class="label">Pinterest</span></a></li>
+					<li><a href="#" class="icon fa-vimeo"><span class="label">Vimeo</span></a></li>
+				</ul> -->
+			</div>
+		</div>
+	</footer>
+
+{% endblock body_block %}
+
+{% block custom_js %}
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/skel.min.js' %}"></script>
+	<script src="{% static 'js/util.js' %}"></script>
+	<script src="{% static 'js/main.js' %}"></script>
+{% endblock custom_js %}
