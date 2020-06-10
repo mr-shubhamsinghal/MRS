@@ -8,7 +8,6 @@ from accounts.forms import CreateUserForm
 
 
 @unauthenticated_user
-@login_required(login_url='authentication:login')
 def home(request):
 	context = {}
 	return render(request, 'home.html', context)
