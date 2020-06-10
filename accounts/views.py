@@ -3,13 +3,18 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
+from accounts.decorators import unauthenticated_user
 from accounts.forms import CreateUserForm
 
+
+@unauthenticated_user
 @login_required(login_url='authentication:login')
 def home(request):
 	context = {}
 	return render(request, 'home.html', context)
 
+
+@unauthenticated_user
 def register(request):
 	from ipdb import set_trace; set_trace()
 	form = CreateUserForm()
@@ -23,6 +28,8 @@ def register(request):
 	context = {'form': form}
 	return render(request, 'register.html', context)
 
+
+@unauthenticated_user
 def login_page(request):
 	if request.method == 'POST':
 		userid = request.POST['email']
@@ -38,6 +45,7 @@ def login_page(request):
 
 	context = {}
 	return render(request, 'login.html', context)
+
 
 def logout_page(request):
 	logout(request)
