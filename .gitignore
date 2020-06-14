@@ -1,5 +1,13 @@
 venv/
 
-*/__pycache__/
+accounts/__pycache__/
+
+accounts/migrations/
+
+MRSapp/__pycache__/
+
+MRSapp/migrations/
 
 Trash/
+
+*.pyc

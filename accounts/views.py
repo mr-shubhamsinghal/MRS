@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
 from accounts.decorators import unauthenticated_user
-from accounts.forms import CreateUserForm
+from accounts.forms import CustomUserCreationForm
 
 
 @unauthenticated_user
@@ -15,12 +15,11 @@ def home(request):
 
 @unauthenticated_user
 def register(request):
-	from ipdb import set_trace; set_trace()
-	form = CreateUserForm()
+	form = CustomUserCreationForm()
 	if request.method == 'POST':
-		form = CreateUserForm(request.POST)
+		form = CustomUserCreationForm(request.POST)
 		if form.is_valid():
-			user = form.cleaned_data.get('identifier')
+			user = form.cleaned_data.get('email')
 			form.save()
 			messages.success(request, 'Account was created for ' + user)
 			return redirect('authentication:login')
@@ -31,10 +30,10 @@ def register(request):
 @unauthenticated_user
 def login_page(request):
 	if request.method == 'POST':
-		userid = request.POST['email']
+		email = request.POST['email']
 		password = request.POST['password']
 
-		user = authenticate(request, identifier=userid, password=password)
+		user = authenticate(request, email=email, password=password)
 
 		if user is not None:
 			login(request, user)
