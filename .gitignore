@@ -11,3 +11,5 @@ MRSapp/migrations/
 Trash/
 
 *.pyc
+
+*.sqlite3
