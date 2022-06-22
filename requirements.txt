@@ -10,7 +10,7 @@ ipython-genutils==0.2.0
 jedi==0.17.0
 joblib==0.13.2
 nltk==3.4.5
-numpy==1.17.1
+numpy==1.22.0
 pandas==0.25.1
 parso==0.7.0
 pickleshare==0.7.5
